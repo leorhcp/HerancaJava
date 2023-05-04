@@ -6,8 +6,7 @@ public class CursoJava{
         CarroCombate c3 = new CarroCombate("Dodge", "RAM");
 
         c3.setValor(80000);
-        c3.sofrerDano();
-        c3.sofrerDano();
+        c3.atirar();
         c1.info();
         c2.info();
         c3.info();

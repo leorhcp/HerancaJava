@@ -4,16 +4,13 @@ public class Carro{
     private float motor;
     private int valor;
     private boolean blindado;
-    private boolean arma;
-    private int armadura;
-
+        private int armadura;
 
 
     public Carro(String marca, String modelo){
         this.marca=marca;
         this.modelo=modelo;
         this.blindado=false;
-        this.arma=false;
         this.armadura=0;
     }
 
@@ -60,16 +57,9 @@ public class Carro{
     public void setBlindado(boolean blindado){
         this.blindado=blindado;
     }
-    public boolean getArma(){
-        return this.arma;
-    }
-    public void setArma(boolean arma){
-        this.arma=arma;
-    }
 
     public int getArmadura(){
         if(armadura <= 0){
-            this.blindado=false;
             System.out.println("O carro foi destruído");
         }
         return this.armadura;

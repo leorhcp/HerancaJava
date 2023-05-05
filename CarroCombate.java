@@ -1,38 +1,44 @@
 public class CarroCombate extends Carro{
-    private int municao = 100;
-    private int atirar;
+    private final int MAX_ARMAMENTO=100;
+    private final int MIN_ARMAMENTO=0;
+    private int qtdeArmamento;
 
-
-    public CarroCombate(String marca, String modelo){
+    public CarroCombate(String marca, String modelo, int blindagem){
         super(marca, modelo);
-        setBlindado(true);
-        setArmadura(100);
-        setMotor(3.0f);
-        setArma(true);
+        setArmamento(true);
+        setMotor(5.0f);
+        setBlindagem(blindagem);
+        this.qtdeArmamento=100;
     }
-    public int getMunicao(){
-        return this.municao;
+
+    public int getQtdeArmamento(){
+        return this.qtdeArmamento;
     }
-    public void setMunicao(int municao){
-        this.municao=municao;
+
+    public void setQtdeArmamento(int qtdeArmamento){
+        this.qtdeArmamento=qtdeArmamento;
+        if(this.qtdeArmamento > MAX_ARMAMENTO){
+            this.qtdeArmamento = MAX_ARMAMENTO;
+        }
+        if (this.qtdeArmamento < MIN_ARMAMENTO){
+            this.qtdeArmamento = MIN_ARMAMENTO;
+        }
     }
-    public int getAtirar(){
-        return this.atirar;
-    }
-    public void setAtirar(int atirar){
-        this.municao--;
-        this.atirar=atirar;
+
+    public void atirar(){
+        if(this.qtdeArmamento > MIN_ARMAMENTO){
+            setQtdeArmamento(-1);
+        } else {
+            System.out.println("Sem armamento!");
+        }
     }
 
     public void info(){
         super.info();
-        System.out.println("Armadura: "+ getArmadura());
-        System.out.println("Motor: " + getMotor());
-        System.out.println("Arma: "+ getArma());
-
-        
+        System.out.printf("Qtde. Armamento: %d%n", getQtdeArmamento());
     }
-    
+
+
 
 }
 

@@ -1,35 +1,22 @@
 public class Carro{
     private String marca;
     private String modelo;
+    private boolean ligado;
+    private boolean destruido;
     private float motor;
     private int valor;
-    private boolean blindado;
-    private boolean arma;
-    private int armadura;
-
+    private boolean armamento;
+    private int blindagem;
 
 
     public Carro(String marca, String modelo){
         this.marca=marca;
         this.modelo=modelo;
-        this.blindado=false;
-        this.arma=false;
-        this.armadura=0;
+        this.destruido=false;
+        this.blindagem=0;
     }
 
-    public void sofrerDano(){
-        this.armadura-=50;
-    }
-
-    public void info(){
-        System.out.println("-----------------------------------");
-        System.out.println("Carro: " + this.marca + " "+this.modelo);
-        System.out.println("Motor: "+ this.motor);
-        System.out.println("Valor do carro: R$"+ this.valor);
-        System.out.printf("Blindado? %s%n",this.blindado  ? "Sim" : "Não");
-
-    }
-
+    
     public String getMarca(){
         return this.marca;
     }
@@ -42,6 +29,31 @@ public class Carro{
     public void setModelo(String modelo){
         this.modelo=modelo;
     }
+
+    public boolean getLigado(){
+        return this.ligado;
+    }
+
+    public void setLigado(boolean ligado){
+        this.ligado=ligado;
+    }
+
+    public boolean getDestruido(){
+        return this.destruido;
+    }
+    
+    public void setDestruido(boolean destruido){
+        this.destruido=destruido;
+    }
+
+    public boolean getArmamento(){
+        return this.armamento;
+    }
+
+    public void setArmamento(boolean armamento){
+        this.armamento=armamento;
+    }
+
     public float getMotor(){
         return this.motor;
     }
@@ -54,28 +66,39 @@ public class Carro{
     public void setValor(int valor){
         this.valor=valor;
     }
-    public boolean getBlindado(){
-        return this.blindado;
-    }
-    public void setBlindado(boolean blindado){
-        this.blindado=blindado;
-    }
-    public boolean getArma(){
-        return this.arma;
-    }
-    public void setArma(boolean arma){
-        this.arma=arma;
-    }
 
-    public int getArmadura(){
-        if(armadura <= 0){
-            this.blindado=false;
+    public int getBlindagem(){
+        if(blindagem <= 0){
             System.out.println("O carro foi destruído");
         }
-        return this.armadura;
+        return this.blindagem;
     }
-    public void setArmadura(int armadura){
-        this.armadura=armadura;
+    public void setBlindagem(int blindagem){
+        this.blindagem=blindagem;
+    }
+
+
+    public void sofrerDano(int dano){
+        this.blindagem=dano;
+        if (this.blindagem<=0){
+            this.blindagem=0;
+            this.ligado=false;
+            this.destruido=true;
+        }
+    }
+
+    public void info(){
+        System.out.println("-----------------------------------");
+        System.out.printf("Marca: %s%n", this.marca);
+        System.out.printf("Modelo: %s%n", this.modelo);
+        System.out.printf("Ligado: %s%n",this.ligado ? "Sim" : "Não");
+        System.out.printf("Destruído: ",this.destruido ? "Sim" : "Não");
+        System.out.printf("Blindagem: %d%n ", this.blindagem);
+        System.out.printf("Armamento: %s%n",this.armamento ? "Sim" : "Não");
+        System.out.println("Motor: "+ this.motor);
+        System.out.println("Valor do carro: R$"+ this.valor);
+
+
     }
 
 
